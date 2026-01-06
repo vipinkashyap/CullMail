@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cull Mail - Email that runs itself</title>
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --surface: #141414;
+            --border: #262626;
+            --text: #fafafa;
+            --text-secondary: #a1a1a1;
+            --accent: #3b82f6;
+            --accent-hover: #60a5fa;
+            --green: #22c55e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--accent), #8b5cf6);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--text) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero .tagline {
+            font-size: 24px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--surface);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border);
+            transform: translateY(-2px);
+        }
+
+        /* Screenshot */
+        .screenshot-section {
+            padding: 40px 0 80px;
+        }
+
+        .screenshot-wrapper {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 8px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .screenshot-wrapper img {
+            width: 100%;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .screenshot-placeholder {
+            aspect-ratio: 16/10;
+            background: linear-gradient(135deg, var(--surface) 0%, var(--border) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 18px;
+        }
+
+        /* Video Section */
+        .video-section {
+            padding: 60px 0 80px;
+        }
+
+        .video-section h2 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 16px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 16px;
+        }
+
+        /* Screenshot Gallery */
+        .gallery-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .gallery-section h2 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+        }
+
+        .gallery-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            display: block;
+        }
+
+        .gallery-item-caption {
+            padding: 16px 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .gallery-item-caption h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .gallery-item-caption p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Features */
+        .features {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .feature-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent), #8b5cf6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        /* Requirements */
+        .requirements {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .requirements h2 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        .requirements-list {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .requirement-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 24px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .requirement-icon {
+            color: var(--green);
+            font-size: 20px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero .tagline {
+                font-size: 18px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">
+                    <div class="logo-icon">📧</div>
+                    <span class="logo-text">Cull Mail</span>
+                </a>
+                <nav class="nav-links">
+                    <a href="#features">Features</a>
+                    <a href="#gallery">Screenshots</a>
+                    <a href="#requirements">Requirements</a>
+                    <a href="https://github.com/vipink1/CullMail">GitHub</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Your email runs itself.<br>You show up for what matters.</h1>
+                <p class="tagline">A native macOS Gmail client that groups emails by domain, lets you archive in bulk, and saves you hours — all without reading your emails.</p>
+                <div class="cta-buttons">
+                    <a href="https://github.com/vipink1/CullMail" class="btn btn-primary">
+                        <span>📂</span> View on GitHub
+                    </a>
+                    <a href="https://github.com/vipink1/CullMail" class="btn btn-secondary">
+                        <span>⭐</span> Star on GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="screenshot-section">
+            <div class="container">
+                <div class="screenshot-wrapper">
+                    <img src="screenshots/hero.png" alt="Cull Mail - Email grouped by sender domain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="screenshot-placeholder" style="display: none;">
+                        App Screenshot Coming Soon
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="video-section">
+            <div class="container">
+                <h2>See It In Action</h2>
+                <div class="video-wrapper">
+                    <iframe
+                        src="https://www.youtube.com/embed/4nnOlLVbHeM"
+                        title="Cull Mail Demo"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery-section" id="gallery">
+            <div class="container">
+                <h2>Screenshots</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="screenshots/email-detail.png" alt="Email Detail View">
+                        <div class="gallery-item-caption">
+                            <h3>Email Detail</h3>
+                            <p>Read emails with full HTML rendering and conversation threads</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="screenshots/search.png" alt="Gmail Search">
+                        <div class="gallery-item-caption">
+                            <h3>Gmail Search</h3>
+                            <p>Full Gmail search syntax support to find any email</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="screenshots/attachments.png" alt="Attachment Browser">
+                        <div class="gallery-item-caption">
+                            <h3>Attachment Browser</h3>
+                            <p>Browse all attachments organized by category</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <div class="container">
+                <h2>Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Group by Domain</h3>
+                        <p>See all emails from a sender at once. Newsletters, promotions, and notifications — instantly organized by who sent them.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🗃️</div>
+                        <h3>Bulk Archive</h3>
+                        <p>Archive all emails from a domain with one click. Clear out years of newsletters in seconds, not hours.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <h3>Gmail Search</h3>
+                        <p>Full Gmail search syntax support. Find old emails, filter by date, attachments, or any Gmail query.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💬</div>
+                        <h3>Conversation View</h3>
+                        <p>See email threads as conversations. Expand and collapse messages in a thread naturally.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3>Privacy First</h3>
+                        <p>All processing happens on your Mac. Your emails never touch external servers. OAuth2 for secure Gmail access.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Native Performance</h3>
+                        <p>Built with SwiftUI for macOS. Fast, lightweight, and feels right at home on your Mac.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="requirements" id="requirements">
+            <div class="container">
+                <h2>Requirements</h2>
+                <div class="requirements-list">
+                    <div class="requirement-item">
+                        <span class="requirement-icon">✓</span>
+                        <span>macOS 14 (Sonoma) or later</span>
+                    </div>
+                    <div class="requirement-item">
+                        <span class="requirement-icon">✓</span>
+                        <span>Gmail account</span>
+                    </div>
+                    <div class="requirement-item">
+                        <span class="requirement-icon">✓</span>
+                        <span>Apple Silicon or Intel Mac</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Made by <a href="https://github.com/vipink1">Vipin</a> • <a href="https://github.com/vipink1/CullMail">View on GitHub</a></p>
+        </div>
+    </footer>
+</body>
+</html>

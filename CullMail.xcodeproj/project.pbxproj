@@ -6,14 +6,74 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		7C5365CE2F0B7A6300DECA0B /* CullKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C5365C62F0B7A6300DECA0B /* CullKit.framework */; };
+		7C5365CF2F0B7A6300DECA0B /* CullKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7C5365C62F0B7A6300DECA0B /* CullKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7C5365E02F0B7D8900DECA0B /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 7C5365DF2F0B7D8900DECA0B /* GRDB */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7C5365CC2F0B7A6300DECA0B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7C5365A42F0B79A200DECA0B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7C5365C52F0B7A6300DECA0B;
+			remoteInfo = CullKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7C5365D32F0B7A6300DECA0B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7C5365CF2F0B7A6300DECA0B /* CullKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C5365E42F0B7D8A00DECA0B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		7C5365AC2F0B79A200DECA0B /* CullMail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CullMail.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C5365C62F0B7A6300DECA0B /* CullKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CullKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C5365D82F0B7AE800DECA0B /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		7C53667F2F0B837E00DECA0B /* Exceptions for "CullMail" folder in "CullMail" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 7C5365AB2F0B79A200DECA0B /* CullMail */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		7C5365AE2F0B79A200DECA0B /* CullMail */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				7C53667F2F0B837E00DECA0B /* Exceptions for "CullMail" folder in "CullMail" target */,
+			);
 			path = CullMail;
+			sourceTree = "<group>";
+		};
+		7C5365C72F0B7A6300DECA0B /* CullKit */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CullKit;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -23,6 +83,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C5365CE2F0B7A6300DECA0B /* CullKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C5365C32F0B7A6300DECA0B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C5365E02F0B7D8900DECA0B /* GRDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -33,7 +102,10 @@
 			isa = PBXGroup;
 			children = (
 				7C5365AE2F0B79A200DECA0B /* CullMail */,
+				7C5365C72F0B7A6300DECA0B /* CullKit */,
 				7C5365AD2F0B79A200DECA0B /* Products */,
+				7C5365D82F0B7AE800DECA0B /* CLAUDE.md */,
+				7C5365DE2F0B7D8900DECA0B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -41,11 +113,29 @@
 			isa = PBXGroup;
 			children = (
 				7C5365AC2F0B79A200DECA0B /* CullMail.app */,
+				7C5365C62F0B7A6300DECA0B /* CullKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
+		7C5365DE2F0B7D8900DECA0B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		7C5365C12F0B7A6300DECA0B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		7C5365AB2F0B79A200DECA0B /* CullMail */ = {
@@ -55,10 +145,12 @@
 				7C5365A82F0B79A200DECA0B /* Sources */,
 				7C5365A92F0B79A200DECA0B /* Frameworks */,
 				7C5365AA2F0B79A200DECA0B /* Resources */,
+				7C5365D32F0B7A6300DECA0B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7C5365CD2F0B7A6300DECA0B /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				7C5365AE2F0B79A200DECA0B /* CullMail */,
@@ -69,6 +161,31 @@
 			productName = CullMail;
 			productReference = 7C5365AC2F0B79A200DECA0B /* CullMail.app */;
 			productType = "com.apple.product-type.application";
+		};
+		7C5365C52F0B7A6300DECA0B /* CullKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7C5365D02F0B7A6300DECA0B /* Build configuration list for PBXNativeTarget "CullKit" */;
+			buildPhases = (
+				7C5365C12F0B7A6300DECA0B /* Headers */,
+				7C5365C22F0B7A6300DECA0B /* Sources */,
+				7C5365C32F0B7A6300DECA0B /* Frameworks */,
+				7C5365C42F0B7A6300DECA0B /* Resources */,
+				7C5365E42F0B7D8A00DECA0B /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				7C5365C72F0B7A6300DECA0B /* CullKit */,
+			);
+			name = CullKit;
+			packageProductDependencies = (
+				7C5365DF2F0B7D8900DECA0B /* GRDB */,
+			);
+			productName = CullKit;
+			productReference = 7C5365C62F0B7A6300DECA0B /* CullKit.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -83,6 +200,9 @@
 					7C5365AB2F0B79A200DECA0B = {
 						CreatedOnToolsVersion = 26.1;
 					};
+					7C5365C52F0B7A6300DECA0B = {
+						CreatedOnToolsVersion = 26.1;
+					};
 				};
 			};
 			buildConfigurationList = 7C5365A72F0B79A200DECA0B /* Build configuration list for PBXProject "CullMail" */;
@@ -94,18 +214,29 @@
 			);
 			mainGroup = 7C5365A32F0B79A200DECA0B;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				7C5365D92F0B7B2F00DECA0B /* XCRemoteSwiftPackageReference "GRDB" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 7C5365AD2F0B79A200DECA0B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				7C5365AB2F0B79A200DECA0B /* CullMail */,
+				7C5365C52F0B7A6300DECA0B /* CullKit */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		7C5365AA2F0B79A200DECA0B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C5365C42F0B7A6300DECA0B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +253,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7C5365C22F0B7A6300DECA0B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7C5365CD2F0B7A6300DECA0B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7C5365C52F0B7A6300DECA0B /* CullKit */;
+			targetProxy = 7C5365CC2F0B7A6300DECA0B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		7C5365B52F0B79A400DECA0B /* Debug */ = {
@@ -250,6 +396,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CullMail/CullMail.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -259,11 +406,13 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CullMail/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mrowl.CullMail;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -282,6 +431,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CullMail/CullMail.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -291,11 +441,13 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CullMail/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mrowl.CullMail;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -306,6 +458,82 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		7C5365D12F0B7A6300DECA0B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UA5N9464WE;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mrowl.isla.CullKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_MODULE = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7C5365D22F0B7A6300DECA0B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UA5N9464WE;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mrowl.isla.CullKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_MODULE = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -330,7 +558,35 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		7C5365D02F0B7A6300DECA0B /* Build configuration list for PBXNativeTarget "CullKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C5365D12F0B7A6300DECA0B /* Debug */,
+				7C5365D22F0B7A6300DECA0B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7C5365D92F0B7B2F00DECA0B /* XCRemoteSwiftPackageReference "GRDB" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/GRDB.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7C5365DF2F0B7D8900DECA0B /* GRDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C5365D92F0B7B2F00DECA0B /* XCRemoteSwiftPackageReference "GRDB" */;
+			productName = GRDB;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7C5365A42F0B79A200DECA0B /* Project object */;
 }
