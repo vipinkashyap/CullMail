@@ -4,6 +4,8 @@
 
 A native macOS Gmail client that groups emails by sender domain, lets you archive in bulk, and saves you hours — all without reading your emails.
 
+**[View Website](https://vipinkashyap.github.io/CullMail/)** | **[Watch Demo](https://youtu.be/4nnOlLVbHeM)**
+
 ![macOS](https://img.shields.io/badge/macOS-14+-blue?style=flat-square)
 ![Swift](https://img.shields.io/badge/Swift-5.9+-orange?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
